@@ -1,0 +1,14 @@
+{
+    "name": "front-end-framework",
+    "version": "0.0.1",
+    "description": "A front end development framework .",
+    "main": "index.js",
+    "dependencies": {},
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "webpack": "^4.8.3"
+    },
+    "scripts": {},
+    "author": "wangruolong@msn.cn",
+    "license": "MIT"
+}
