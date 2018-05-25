@@ -1,0 +1,32 @@
+.home-box{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.item-box{
+    flex: 1;
+}
+.header{
+    display: flex;
+}
+.header-item{
+    flex: 1;
+}
+.content{
+}
+.title{
+    display: flex;
+    border-bottom: 1px solid blue;
+}
+.row{
+    height: 2rem;
+    line-height: 2rem;
+    border-bottom: 1px dotted blue;
+}
+.column{
+    flex: 1;
+}
+.footer{
+
+}
