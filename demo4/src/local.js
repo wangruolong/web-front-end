@@ -3,7 +3,7 @@ import Game from './game'
 var Local = function() {
     //游戏对象
     var game;
-    var INTERVAL = 500;
+    var INTERVAL = 300;
     var timer = null;
     var timeCount = 0;
     var time = 0;
