@@ -1,5 +1,7 @@
-import SquareFactory from './squareFactory.js'
+import SquareFactory from './squareFactory'
+
 var Game = function () {
+    var squareFactory = new SquareFactory();
     //dom元素
     var gameDiv;
     var nextDiv;
@@ -234,7 +236,7 @@ var Game = function () {
     var performNext = function (type, dir) {
         cur = next;
         setData();
-        next = SquareFactory.make(type, dir)
+        next = squareFactory.make(type, dir)
         refreshDiv(gameData, gameDivs);
         refreshDiv(next.data, nextDivs);
     }
@@ -278,7 +280,7 @@ var Game = function () {
         timeDiv = doms.timeDiv;
         scoreDiv = doms.scoreDiv;
         resultDiv = doms.resultDiv;
-        next = SquareFactory.make(type, dir);
+        next = squareFactory.make(type, dir);
         initDiv(gameDiv, gameData, gameDivs);
         initDiv(nextDiv, next.data, nextDivs);
         refreshDiv(next.data, nextDivs);
@@ -299,4 +301,4 @@ var Game = function () {
     this.gameover = gameover;
 }
 
-export default new Game();
+export default Game;

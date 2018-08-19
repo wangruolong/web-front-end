@@ -1,6 +1,6 @@
-// import Game from './game.js'
+import Game from './game'
 
-var Local = (function() {
+var Local = function() {
     //游戏对象
     var game;
     var INTERVAL = 200;
@@ -60,19 +60,18 @@ var Local = (function() {
     }
     //开始
     var start = function () {
-        alert('游戏开始！')
-        // var doms = {
-        //     gameDiv: document.getElementById('game'),
-        //     nextDiv: document.getElementById('next'),
-        //     timeDiv: document.getElementById('time'),
-        //     scoreDiv: document.getElementById('score'),
-        //     resultDiv: document.getElementById('gameover')
-        // }
-        // // game = new Game();
-        // Game.init(doms, generateType(), generateDir());
-        // bindKeyEvent();
-        // Game.performNext(generateType(), generateDir())
-        // timer = setInterval(move, INTERVAL)
+        var doms = {
+            gameDiv: document.getElementById('game'),
+            nextDiv: document.getElementById('next'),
+            timeDiv: document.getElementById('time'),
+            scoreDiv: document.getElementById('score'),
+            resultDiv: document.getElementById('gameover')
+        }
+        game = new Game();
+        game.init(doms, generateType(), generateDir());
+        bindKeyEvent();
+        game.performNext(generateType(), generateDir())
+        timer = setInterval(move, INTERVAL)
     }
     var stop = function () {
         if (timer) {
@@ -84,4 +83,6 @@ var Local = (function() {
     //导出API
     this.start = start;
     this.sotp = stop;
-})()
+}
+
+export default Local

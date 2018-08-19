@@ -94,4 +94,4 @@ Square.prototype.rotate = function (num) {
     }
 }
 
-export default new Square();
+export default Square;

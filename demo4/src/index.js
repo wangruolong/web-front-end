@@ -1,5 +1,5 @@
 import './style.css';
-import Local from './local'
+import Local from './local';
 
 function indexPage(){
 	var main = document.createElement('div');
@@ -49,7 +49,9 @@ function indexPage(){
     btn.id = 'btn';
     btn.className = 'btn';
     btn.innerText = '开始';
-    btn.setAttribute('click',Local.start());
+    var local = new Local();
+    // btn.setAttribute('click',local.start());
+    btn.onclick = local.start;
     main.appendChild(btn);
 
     return main;

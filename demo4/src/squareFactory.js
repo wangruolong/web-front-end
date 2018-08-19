@@ -1,7 +1,7 @@
-import Square from './square.js'
+import Square from './square'
 
 var Square1 = function () {
-    Square().call(this)
+    Square.call(this)
     //旋转数组
     this.rotates = [
         [
@@ -33,7 +33,7 @@ var Square1 = function () {
 Square1.prototype = Square.prototype
 
 var Square2 = function () {
-    Square().call(this)
+    Square.call(this)
     //旋转数组
     this.rotates = [
         [
@@ -65,7 +65,7 @@ var Square2 = function () {
 Square2.prototype = Square.prototype
 
 var Square3 = function () {
-    Square().call(this)
+    Square.call(this)
     //旋转数组
     this.rotates = [
         [
@@ -97,7 +97,7 @@ var Square3 = function () {
 Square3.prototype = Square.prototype
 
 var Square4 = function () {
-    Square().call(this)
+    Square.call(this)
     //旋转数组
     this.rotates = [
         [
@@ -129,7 +129,7 @@ var Square4 = function () {
 Square4.prototype = Square.prototype
 
 var Square5 = function () {
-    Square().call(this)
+    Square.call(this)
     //旋转数组
     this.rotates = [
         [
@@ -161,7 +161,7 @@ var Square5 = function () {
 Square5.prototype = Square.prototype
 
 var Square6 = function () {
-    Square().call(this)
+    Square.call(this)
     //旋转数组
     this.rotates = [
         [
@@ -193,7 +193,7 @@ var Square6 = function () {
 Square6.prototype = Square.prototype
 
 var Square7 = function () {
-    Square().call(this)
+    Square.call(this)
     //旋转数组
     this.rotates = [
         [
@@ -265,4 +265,4 @@ SquareFactory.prototype.make = function (index, dir) {
     return s
 }
 
-export default new SquareFactory();
+export default SquareFactory;
