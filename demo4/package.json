@@ -1,0 +1,35 @@
+{
+  "name": "demo4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "webpack-dev-server --open --config webpack.dev.js --mode development",
+    "dev": "webpack --config webpack.dev.js --mode development --display-modules",
+    "debug": "webpack --config webpack.debug.js --mode production --display-modules",
+    "prod": "webpack --config webpack.prod.js --mode production --display-modules",
+    "start": "http-server dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^1.0.0",
+    "csv-loader": "^3.0.2",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.11.1",
+    "jquery": "^3.3.1",
+    "style-loader": "^0.22.1",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.4",
+    "xml-loader": "^1.2.1"
+  }
+}
