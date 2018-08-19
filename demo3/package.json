@@ -6,30 +6,28 @@
   "sideEffects": false,
   "scripts": {
     "server": "webpack-dev-server --open --config webpack.dev.js",
-    "dev": "webpack --config webpack.dev.js",
-    "prod": "webpack --config webpack.prod.js",
-    "start":"http-server dist"
+    "dev": "webpack --config webpack.dev.js --mode development --display-modules",
+    "debug": "webpack --config webpack.debug.js --mode production --display-modules",
+    "prod": "webpack --config webpack.prod.js --mode production --display-modules",
+    "start": "http-server dist"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.10",
-    "path": "^0.12.7",
-    "webpack": "^4.16.5",
-    "webpack-cli": "^3.1.0"
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "csv-loader": "^3.0.2",
-    "express": "^4.16.3",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "http-server": "^0.11.1",
     "style-loader": "^0.22.1",
-    "webpack-dev-middleware": "^3.1.3",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5",
-    "webpack-hot-middleware": "^2.22.3",
     "webpack-merge": "^4.1.4",
     "xml-loader": "^1.2.1"
   }
