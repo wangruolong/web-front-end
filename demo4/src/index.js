@@ -43,16 +43,24 @@ function indexPage(){
     div2.appendChild(label21);
     info.appendChild(div2);
 
+    var gameover = document.createElement('div');
+    gameover.id = 'gameover';
+    info.appendChild(gameover);
+
     main.appendChild(info);
 
-    var btn = document.createElement('button');
-    btn.id = 'btn';
-    btn.className = 'btn';
-    btn.innerText = '开始';
+    var btnStart = document.createElement('button');
+    btnStart.id = 'btnStart';
+    btnStart.className = 'btn btn_start';
+    btnStart.innerText = '开始';
+
     var local = new Local();
-    // btn.setAttribute('click',local.start());
-    btn.onclick = local.start;
-    main.appendChild(btn);
+    btnStart.onclick = function () {
+        local.start();
+        btnStart.setAttribute('disabled','disabled');
+    }
+
+    main.appendChild(btnStart);
 
     return main;
 }

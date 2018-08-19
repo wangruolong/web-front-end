@@ -42,6 +42,12 @@
 }
 .btn {
     position: absolute;
+}
+.btn_start {
     top: 200px;
     left: 250px;
+}
+.btn_stop {
+    top: 200px;
+    left: 300px;
 }

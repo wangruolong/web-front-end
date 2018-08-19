@@ -3,7 +3,7 @@ import Game from './game'
 var Local = function() {
     //游戏对象
     var game;
-    var INTERVAL = 200;
+    var INTERVAL = 500;
     var timer = null;
     var timeCount = 0;
     var time = 0;
@@ -82,7 +82,8 @@ var Local = function() {
     }
     //导出API
     this.start = start;
-    this.sotp = stop;
+    this.stop = stop;
+    
 }
 
 export default Local

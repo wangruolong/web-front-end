@@ -87,7 +87,6 @@ var Game = function () {
      * @param {*} y 横过去的坐标
      */
     var check = function (pos, x, y) {
-        console.log(pos, x, y)
         if (pos.x + x < 0) {
             return false;
         } else if (pos.x + x >= gameData.length) {
@@ -240,7 +239,7 @@ var Game = function () {
         refreshDiv(gameData, gameDivs);
         refreshDiv(next.data, nextDivs);
     }
-    //设置事件
+    //设置时间
     var setTime = function (time) {
         timeDiv.innerHTML = time;
     }
@@ -265,6 +264,7 @@ var Game = function () {
         }
         score = score + s;
         scoreDiv.innerHTML = score;
+        this.score = score;
     }
     var gameover = function (win) {
         if (win) {
@@ -299,6 +299,7 @@ var Game = function () {
     this.setTime = setTime;
     this.addScore = addScore;
     this.gameover = gameover;
+    this.score = score;
 }
 
 export default Game;
