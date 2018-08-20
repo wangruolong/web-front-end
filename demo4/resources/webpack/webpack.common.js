@@ -12,10 +12,13 @@ module.exports = {
         //正产环境，编译的路径。
         //把js编译到__dirname的路径+dist路径下面。
         //__dirname是path中的变量，是当前webpack.config.js文件所处的路径。
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, '../../dist')
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        //第一个参数是个数组，可以指定清除多个路径的文件。
+        new CleanWebpackPlugin(['../../dist'], {
+            allowExternal: true//该插件默认只能清除当前配置所处的文件夹，开启allowExternal=true使其可以清除当前目录之外的文件夹。
+        }),
         new HtmlWebpackPlugin({
             title: 'tetris'
         }),

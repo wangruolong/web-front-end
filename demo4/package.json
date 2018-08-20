@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "webpack-dev-server --open --config webpack.dev.js --mode development",
-    "dev": "webpack --config webpack.dev.js --mode development --display-modules",
-    "debug": "webpack --config webpack.debug.js --mode production --display-modules",
-    "prod": "webpack --config webpack.prod.js --mode production --display-modules"
+    "server": "webpack-dev-server --open --config ./resources/webpack/webpack.dev.js --mode development",
+    "dev": "webpack --config ./resources/webpack/webpack.dev.js --mode development --display-modules",
+    "debug": "webpack --config ./resources/webpack/webpack.debug.js --mode production --display-modules",
+    "prod": "webpack --config ./resources/webpack/webpack.prod.js --mode production --display-modules"
   },
   "keywords": [],
   "author": "",
