@@ -7,8 +7,7 @@
     "server": "webpack-dev-server --open --config webpack.dev.js --mode development",
     "dev": "webpack --config webpack.dev.js --mode development --display-modules",
     "debug": "webpack --config webpack.debug.js --mode production --display-modules",
-    "prod": "webpack --config webpack.prod.js --mode production --display-modules",
-    "start": "http-server dist"
+    "prod": "webpack --config webpack.prod.js --mode production --display-modules"
   },
   "keywords": [],
   "author": "",

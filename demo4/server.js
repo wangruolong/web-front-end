@@ -2,7 +2,8 @@
 const webpackDevServer = require('webpack-dev-server');
 //webpack
 const webpack = require('webpack');
-const config = require('./webpack/webpack.server.js');
+//遵循不重复原则(Don't repeat yourself - DRY)，保留一个“通用”配置。
+const config = require('./webpack.server.js');
 const options = {
   contentBase: './dist',
   hot: true,

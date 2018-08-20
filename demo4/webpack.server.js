@@ -5,13 +5,15 @@ const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-//开发server环境
+//server环境
+//提供给node server.js和webpack-dev-server运行的环境配置。
 //1.√压缩入口文件。打包后的app.xxx.js、another-modules.xxx.js、commons.xxx.js文件，没有进行压缩。
 //2.√源文件映射。有打包前和打包后的映射文件source-map，可以方便的进行定位。
 //3.√抽取css。
 //4.√压缩css。
 module.exports = merge(common, {
     devtool: 'inline-source-map',
+    mode: 'development',
     output: {
         filename: '[name].[hash].js',
         //正产环境，编译的路径。
