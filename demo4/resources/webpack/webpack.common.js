@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
     entry: {
@@ -26,7 +27,9 @@ module.exports = {
             _: 'lodash',
             $: 'jquery'
             // join: ['lodash', 'join']
-        })
+        }),
+        // 包分析器
+        // new BundleAnalyzerPlugin()
     ],
     //等价于webpack 3的plugin webpack.optimize.CommonsChunkPlugin
     optimization: {
