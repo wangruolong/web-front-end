@@ -222,6 +222,7 @@ var Game = function () {
         }
         return line;
     }
+    //游戏结束
     var checkGameover = function () {
         var gameOver = false;
         for (var i = 0; i < gameData[0].length; i++) {
@@ -230,6 +231,16 @@ var Game = function () {
             }
         }
         return gameOver
+    }
+    //底部增加行
+    var addTailLindes = function (lines) {
+        for (var i = 0; i < gameData.length - lines.length; i++) {
+            gameData[i] = gameData[i + lines.length];
+        }
+        for (var i = 0; i < lines.length; i++) {
+            gameData[gameData.length - lines.length + i] = lines[i];
+        }
+
     }
     //使用下一个方块
     var performNext = function (type, dir) {
@@ -300,6 +311,7 @@ var Game = function () {
     this.addScore = addScore;
     this.gameover = gameover;
     this.score = score;
+    this.addTailLindes = addTailLindes;
 }
 
 export default Game;

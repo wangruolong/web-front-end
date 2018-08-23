@@ -1,4 +1,5 @@
 import Game from './game'
+import { generateType, generateDir } from './utils'
 
 var Local = function() {
     //游戏对象
@@ -50,22 +51,15 @@ var Local = function() {
             game.setTime(time);
         }
     }
-    //随机生成一个方块种类
-    var generateType = function () {
-        return Math.ceil(Math.random() * 7) - 1
-    }
-    //随机生成一个旋转次数
-    var generateDir = function () {
-        return Math.ceil(Math.random() * 4) - 1
-    }
+   
     //开始
     var start = function () {
         var doms = {
-            gameDiv: document.getElementById('game'),
-            nextDiv: document.getElementById('next'),
-            timeDiv: document.getElementById('time'),
-            scoreDiv: document.getElementById('score'),
-            resultDiv: document.getElementById('gameover')
+            gameDiv: document.getElementById('local_game'),
+            nextDiv: document.getElementById('local_next'),
+            timeDiv: document.getElementById('local_time'),
+            scoreDiv: document.getElementById('local_score'),
+            resultDiv: document.getElementById('local_gameover')
         }
         game = new Game();
         game.init(doms, generateType(), generateDir());

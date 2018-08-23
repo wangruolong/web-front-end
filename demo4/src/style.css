@@ -1,3 +1,12 @@
+.square {
+    width: 400px;
+    height: 600px;
+    float: left;
+}
+.title {
+    font-size: 30px;
+    margin: 20px auto;
+}
 .game {
     width:200px;
     height: 400px;
@@ -5,23 +14,35 @@
     border-left: 1px solid blue;
     border-right: 1px solid blue;
     border-bottom:1px solid blue;
-    position: absolute;
-    top: 10px;
-    left:10px;
+    position: relative;
+    float: left;
 }
 .next {
     width: 80px;
     height: 80px;
     background-color: #F2FAFF;
-    position: absolute;
-    top: 10px;
-    left:250px;
+    position: relative;
     border:1px solid blue;
+    float: left;
+    margin-left: 40px;
 }
 .info {
-    position: absolute;
-    top: 100px;
-    left: 250px;    
+    float: left;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.btn {
+    position: relative;
+}
+.btn_start {
+    float: left;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.btn_stop {
+    float: left;
+    margin-left: 40px;
+    margin-top: 40px;
 }
 .none, .current, .done{
     width: 20px;
@@ -39,15 +60,4 @@
 .done {
     background-color:gray;
     border: 1px solid black;
-}
-.btn {
-    position: absolute;
-}
-.btn_start {
-    top: 200px;
-    left: 250px;
-}
-.btn_stop {
-    top: 200px;
-    left: 300px;
 }

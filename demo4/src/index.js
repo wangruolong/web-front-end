@@ -1,68 +1,51 @@
 import './style.css';
 import Local from './local';
+import Remote from './remote';
 
-function indexPage(){
-	var main = document.createElement('div');
-	
-	var game = document.createElement('div');
-    game.id='game';
-    game.setAttribute('class','game');
-    main.appendChild(game);
-
-    var next = document.createElement('div');
-    next.id='next';
-    next.setAttribute('class','next');
-    main.appendChild(next);
-    
-    var info = document.createElement('div');
-    info.setAttribute('class','info');
-
-    var label10 = document.createElement('label');
-    label10.innerText = '已用时：';
-    var label11 = document.createElement('label');
-    label11.innerText = 's';
-    var div1 = document.createElement('div');
-    div1.appendChild(label10);
-    var time = document.createElement('span');
-    time.id='time';
-    time.innerText='0'
-    div1.appendChild(time);
-    div1.appendChild(label11);
-    info.appendChild(div1);
-
-    var label20 = document.createElement('label');
-    label20.innerText = '已得分：';
-    var label21 = document.createElement('label');
-    label21.innerText = '分';
-    var div2 = document.createElement('div');
-    div2.appendChild(label20);
-    var score = document.createElement('span');
-    score.id='score';
-    score.innerText='0'
-    div2.appendChild(score);
-    div2.appendChild(label21);
-    info.appendChild(div2);
-
-    var gameover = document.createElement('div');
-    gameover.id = 'gameover';
-    info.appendChild(gameover);
-
-    main.appendChild(info);
-
-    var btnStart = document.createElement('button');
-    btnStart.id = 'btnStart';
-    btnStart.className = 'btn btn_start';
-    btnStart.innerText = '开始';
-
+(function indexPage() {
+    var html = `
+                <div>请使用方向键和空格键进行操作：↑旋转，←左移，→右移，↓下移，空格坠落</div>
+                <div class="square" id="local">
+                    <div class="title">我的游戏区</div>
+                    <div class="game" id="local_game"></div>
+                    <div class="next" id="local_next"></div>
+                    <div class="info">
+                        <div>已用时：
+                            <span id="local_time">0</span>s</div>
+                        <div>已得分：
+                            <span id="local_score">0</span>分</div>
+                        <div id="local_gameover"></div>
+                    </div>
+                    <input type='button' id='btnStart' class='btn btn_start' value='开始' ></input>
+                </div>
+                <div class="square" id="remote">
+                    <div class="title">对方游戏区</div>
+                    <div class="game" id="remote_game"></div>
+                    <div class="next" id="remote_next"></div>
+                    <div class="info">
+                        <div>已用时：
+                            <span id="remote_time">0</span>s</div>
+                        <div>已得分：
+                            <span id="remote_score">0</span>分</div>
+                        <div id="remote_gameover"></div>
+                        <button id='performNext'>performNext</button><br />
+                        <button id='rotate'>rotate</button><br />
+                        <button id='left'>left</button> <button id='right'>right</button><br />
+                        <button id='down'>down</button><br />
+                        <button id='fall'>fall</button><br />
+                        <button id='addTailLindes'>addTailLindes</button><br />
+                    </div>
+                    
+                </div>
+                `
+    $(document.body).append(html);
     var local = new Local();
-    btnStart.onclick = function () {
+    var remote = new Remote();
+    $('#btnStart').click(function () {
         local.start();
-        btnStart.setAttribute('disabled','disabled');
-    }
+        remote.start();
+        remote.bindEvents();
+        btnStart.setAttribute('disabled', 'disabled');
+    });
 
-    main.appendChild(btnStart);
-
-    return main;
-}
-
-document.body.appendChild(indexPage());
+})()
