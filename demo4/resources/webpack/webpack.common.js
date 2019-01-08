@@ -5,21 +5,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-
+console.info('从这里可以看出当前执行的路径。说明webpack里面的路径是参照package.json所在的位置的。',process.cwd())
 module.exports = {
-    entry: {
+    entry: {//入口
         app: './src/index.js'
     },
-    output: {
+    output: {//出口
         filename: '[name].[chunkhash].js',
-        //正产环境，编译的路径。
-        //把js编译到__dirname的路径+dist路径下面。
-        //__dirname是path中的变量，是当前js文件所处的路径。
-        path: path.resolve(__dirname, '../../dist')
+        //__dirname是path中的变量，是当前js文件所处的路径。**/demo4/resources/webpack/
+        //process.cwd()返回进程的当前工作目录。就是返回package.json的目录。**/demo4/
+        path: path.join(process.cwd(), 'dist')
     },
     plugins: [
         //第一个参数是个数组，可以指定清除多个路径的文件。第二个参数是对CleanWebpackPlugin的配置。
-        new CleanWebpackPlugin(['../../dist'], {
+        new CleanWebpackPlugin([path.join(process.cwd(), 'dist')], {
             allowExternal: true//该插件默认只能清除当前配置所处的文件夹，开启allowExternal=true使其可以清除当前目录之外的文件夹。
         }),
         new HtmlWebpackPlugin({
