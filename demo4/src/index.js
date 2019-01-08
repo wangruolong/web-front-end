@@ -1,11 +1,10 @@
 import './style.css';
 import Local from './local';
-import Remote from './remote';
+// import Remote from './remote';
 
 (function indexPage() {
     var html = `
                 <div class="square" id="local">
-                    <div class="title">我的游戏区</div>
                     <div class="game" id="local_game"></div>
                     <div class="next" id="local_next"></div>
                     <div class="info">
@@ -28,11 +27,11 @@ import Remote from './remote';
                 `
     $(document.body).append(html);
     var local = new Local();
-    var remote = new Remote();
+    // var remote = new Remote();
     $('#btnStart').click(function () {
         local.start();
-        remote.start();
-        remote.bindEvents();
+        // remote.start();
+        // remote.bindEvents();
         btnStart.setAttribute('disabled', 'disabled');
     });
 
