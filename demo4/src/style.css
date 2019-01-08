@@ -1,5 +1,5 @@
 .square {
-    width: 400px;
+    width: 350px;
     height: 600px;
     float: left;
 }
@@ -29,21 +29,16 @@
 .info {
     float: left;
     margin-left: 40px;
-    margin-top: 40px;
+    margin-top: 20px;
 }
+
 .btn {
-    position: relative;
-}
-.btn_start {
     float: left;
     margin-left: 40px;
     margin-top: 40px;
+    text-align: center;
 }
-.btn_stop {
-    float: left;
-    margin-left: 40px;
-    margin-top: 40px;
-}
+
 .none, .current, .done{
     width: 20px;
     height: 20px;
@@ -60,4 +55,16 @@
 .done {
     background-color:gray;
     border: 1px solid black;
+}
+.instructions {
+    float: left;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+.instructions em{
+    color: red;
+}
+.ins-item {
+    text-align: center;
+    color: blue;
 }

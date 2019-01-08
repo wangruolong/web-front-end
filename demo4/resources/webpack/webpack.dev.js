@@ -1,52 +1,17 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 //开发环境
-//1.×压缩入口文件。打包后的app.xxx.js、another-modules.xxx.js、commons.xxx.js文件，没有进行压缩。
-//2.√源文件映射。有打包前和打包后的映射文件source-map，可以方便的进行定位。
-//3.×抽取css。
-//4.×压缩css。
 module.exports = merge(common, {
     devtool: 'inline-source-map',
+    mode: 'development', // mode=develop，会将 process.env.NODE_ENV 的值设为 development。启用 NamedChunksPlugin 和 NamedModulesPlugin。
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development')
-        })
-    ],
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
-            },
-            {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: [
-                    'file-loader'
-                ]
-            },
-            {
-                test: /\.(csv|tsv)$/,
-                use: [
-                    'csv-loader'
-                ]
-            },
-            {
-                test: /\.xml$/,
-                use: [
-                    'xml-loader'
-                ]
-            }
-        ]
-    }
+        // new webpack.DefinePlugin({//定义环境变量
+        //     'process.env.NODE_ENV': JSON.stringify('development')
+        // })
+        // new webpack.NamedModulesPlugin()//当开启 HMR 的时候使用该插件会显示模块的相对路径，建议用于开发环境。
+        // new webpack.NamedChunksPlugin()
+    ]
 });

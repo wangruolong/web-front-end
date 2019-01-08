@@ -24,6 +24,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Code Splitting'
         }),
+        //可以在代码中直接使用这些变量。
         new webpack.ProvidePlugin({
             // _: 'lodash',
             join: ['lodash', 'join']
