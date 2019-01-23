@@ -1,5 +1,8 @@
 # 前端开发框架
 用webpack 4构建前端应用。
+react-router 3.x
+redux-saga 0.x
+babel 6
 
 ## 前置要求
 - npm v6.4.0
@@ -15,7 +18,4 @@
     > npm run dev
 - 用http-server
     > npm run dist
-
-## 编译发布
-sdp自动发布。
 
