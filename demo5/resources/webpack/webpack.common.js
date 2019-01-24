@@ -23,6 +23,9 @@ module.exports = {
             title: '网站标题',
             template: path.join(__dirname, '../template/index-template.html')
         }),
+        new webpack.DefinePlugin({
+            'process.env.APP_ENV': JSON.stringify(process.env.APP_ENV)
+        }),
         new webpack.ProvidePlugin({
             _: 'lodash',
             $: 'jquery',

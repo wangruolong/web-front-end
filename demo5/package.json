@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dist": "http-server dist",
-    "dev": "webpack-dev-server --open --config ./resources/webpack/webpack.dev.js --mode development",
-    "build:development": "webpack --config ./resources/webpack/webpack.dev.js --display-modules",
-    "build:product": "webpack --config ./resources/webpack/webpack.prod.js --display-modules"
+    "dev": "cross-env APP_ENV=dev webpack-dev-server --open --config ./resources/webpack/webpack.dev.js --mode development",
+    "build:development": "cross-env APP_ENV=development webpack --config ./resources/webpack/webpack.dev.js --display-modules",
+    "build:product": "cross-env APP_ENV=product webpack --config ./resources/webpack/webpack.prod.js --display-modules"
   },
   "keywords": [],
   "author": "",
@@ -39,6 +39,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",

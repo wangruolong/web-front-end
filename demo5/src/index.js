@@ -11,9 +11,10 @@ import DevTools from './devTools'
 
 const sagaMiddleware = createSagaMiddleware()
 
+console.log(111,process.env.APP_ENV)
 let finalCreateStore
 let App
-if (process.env.NODE_ENV === 'development') {
+if (process.env.APP_ENV === 'development') {
     finalCreateStore = compose(
         applyMiddleware(logger, sagaMiddleware),
         DevTools.instrument()
