@@ -5,22 +5,25 @@ import TodoListDump from '../components/todoList'
 
 
 const mapStateToProps = state => {
-    return {
-        todos: state.todos
-    }
+	return {
+		todos: state.todos
+	}
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-        onTodoClick: (id) => {
-            dispatch(toggleTodo(id))
-        }
-    }
+	return {
+		onTodoClick: (id) => {
+			dispatch(toggleTodo(id))
+		},
+		onAddTodo: (id, text, completed) =>{
+			dispatch(addTodo(id, text, completed))
+		}
+	}
 }
 
 const TodoListSmart = connect(
-    mapStateToProps,
-    mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(TodoListDump)
 
 export default TodoListSmart

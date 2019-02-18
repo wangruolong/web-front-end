@@ -1,5 +1,5 @@
 {
-  "name": "dj-meetingtool-web",
+  "name": "front-framework-demo5",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,14 +7,20 @@
     "dist": "http-server dist",
     "dev": "cross-env APP_ENV=dev webpack-dev-server --open --config ./resources/webpack/webpack.dev.js --mode development",
     "build:development": "cross-env APP_ENV=development webpack --config ./resources/webpack/webpack.dev.js --display-modules",
-    "build:product": "cross-env APP_ENV=product webpack --config ./resources/webpack/webpack.prod.js --display-modules"
+    "build:product": "cross-env APP_ENV=product webpack --config ./resources/webpack/webpack.prod.js --display-modules",
+    "lint": "eslint src"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "gerrit.sdp.nd:29418/app-web/dj-meetingtool-web"
+    "url": "git@github.com:wangruolong/front-end-framework.git"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
@@ -30,6 +36,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^7.1.5",
     "babel-plugin-add-module-exports": "^1.0.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.5",
@@ -41,9 +48,13 @@
     "clean-webpack-plugin": "^0.1.19",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
+    "eslint": "^5.13.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-react": "^7.12.4",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "http-server": "^0.11.1",
+    "husky": "^1.3.1",
     "jquery": "^3.3.1",
     "mini-css-extract-plugin": "^0.4.1",
     "node-sass": "^4.11.0",
