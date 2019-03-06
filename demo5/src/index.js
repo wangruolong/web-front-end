@@ -18,7 +18,7 @@ if (process.env.APP_ENV === 'dev') {
 		applyMiddleware(logger, sagaMiddleware),
 		DevTools.instrument()
 	)(createStore)
-	class DevApp extends Component(){
+	class DevApp extends Component{
 		render(){
 			return(<div>
 				<Routes/>
@@ -32,7 +32,7 @@ if (process.env.APP_ENV === 'dev') {
 	finalCreateStore = compose(
 		applyMiddleware(logger, sagaMiddleware),
 	)(createStore)
-	class ProdApp extends Component(){
+	class ProdApp extends Component{
 		render(){
 			return(<div>
 				<Routes/>
