@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dist": "http-server dist",
-    "dev": "cross-env APP_ENV=dev webpack-dev-server --open --config ./resources/webpack/webpack.dev.js --mode development",
+    "dev": "cross-env APP_ENV=dev webpack-dev-server --open --config ./resources/webpack/webpack.dev.js --mode development --host 0.0.0.0",
     "build:development": "cross-env APP_ENV=development webpack --config ./resources/webpack/webpack.dev.js --display-modules",
     "build:product": "cross-env APP_ENV=product webpack --config ./resources/webpack/webpack.prod.js --display-modules",
     "lint": "eslint src"
