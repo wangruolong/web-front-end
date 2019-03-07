@@ -65,6 +65,7 @@ module.exports = {
 			{
 				test: /\.css$/,
 				use: [
+					// style-loader把css放到<styles/>里面，而css-Loader则是把css通过<link/>引入。
 					// 'style-loader',
 					MiniCssExtractPlugin.loader,
 					{
