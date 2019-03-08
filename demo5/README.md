@@ -9,13 +9,11 @@ babel 6
 - node v8.11.4
 
 ## 本地server环境
-1. 压缩入口文件。打包后的app.xxx.js、another-modules.xxx.js、commons.xxx.js文件，没有进行压缩。
-2. 源文件映射。有打包前和打包后的映射文件source-map，可以方便的进行定位。
-
-- 用node
-    > npm start
-- 用webpack-dev-server
+## 本地server环境
+- 用webpack-dev-server（推荐使用）
     > npm run dev
-- 用http-server
+- 用node启动webpack-dev-server（可以通过ip访问）
+    > npm start
+- 用http-server（用于本地测试编译打包后的文件）
     > npm run dist
 

@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 //开发环境
 module.exports = merge(common, {
@@ -12,5 +13,6 @@ module.exports = merge(common, {
 		// })
 		// new webpack.NamedModulesPlugin()//当开启 HMR 的时候使用该插件会显示模块的相对路径，建议用于开发环境。
 		// new webpack.NamedChunksPlugin()
+		// new UglifyJsPlugin() 
 	]
 })
