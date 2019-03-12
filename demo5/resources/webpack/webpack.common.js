@@ -12,10 +12,10 @@ module.exports = {
 	},
 	output: {
 		filename: '[name].[chunkhash].js',
-		path: path.join(process.cwd(), './dist')
+		path: path.join(process.cwd(), './dist')//输出目录和清理目录要对应
 	},
 	plugins: [
-		new CleanWebpackPlugin([path.join(process.cwd(), './dist')], {
+		new CleanWebpackPlugin([path.join(process.cwd(), './dist')], {//输出目录和清理目录要对应
 			allowExternal: true,
 			exclude: ['WEB-INF']
 		}),
@@ -26,7 +26,7 @@ module.exports = {
 		new webpack.DefinePlugin({
 			'process.env.APP_ENV': JSON.stringify(process.env.APP_ENV)
 		}),
-		new webpack.ProvidePlugin({
+		new webpack.ProvidePlugin({//在全局范围内可以使用以下key
 			_: 'lodash',
 			$: 'jquery',
 			join: ['lodash', 'join']
@@ -38,7 +38,7 @@ module.exports = {
 		new OptimizeCSSAssetsPlugin()
 		// new BundleAnalyzerPlugin()
 	],
-	optimization: {
+	optimization: {//如果2个模块以上的文件引用了同一个文件，则会抽取出来作为公共文件引用。
 		splitChunks: {
 			cacheGroups: {
 				commons: {
@@ -50,9 +50,11 @@ module.exports = {
 		}
 	},
 	resolve: {
-		alias: {
+		alias: {//在全局范围内定义的别名，可以在import from的时候使用。
 			styles: path.resolve(process.cwd(), './src/styles'),
-			resources: path.resolve(process.cwd(), './resources')
+			resources: path.resolve(process.cwd(), './resources'),
+			components: path.resolve(process.cwd(), './src/components'),
+			actions: path.resolve(process.cwd(), './src/actions')
 		}
 	},
 	module: {
