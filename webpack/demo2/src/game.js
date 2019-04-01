@@ -1,4 +1,5 @@
 import SquareFactory from './squareFactory'
+import Styles from './style.css'
 
 var Game = function () {
     var squareFactory = new SquareFactory();
@@ -51,7 +52,7 @@ var Game = function () {
             var div = [];
             for (var j = 0; j < data[0].length; j++) {
                 var newNode = document.createElement('div')
-                newNode.className = 'none';
+                newNode.className = `${Styles.none}`;
                 newNode.style.top = (i * 20) + 'px';
                 newNode.style.left = (j * 20) + 'px';
                 container.appendChild(newNode);
@@ -71,11 +72,11 @@ var Game = function () {
         for (var i = 0; i < data.length; i++) {
             for (var j = 0; j < data[0].length; j++) {
                 if (data[i][j] == 0) {
-                    divs[i][j].className = 'none';
+                    divs[i][j].className = `${Styles.none}`;
                 } else if (data[i][j] == 1) {
-                    divs[i][j].className = 'done';
+                    divs[i][j].className = `${Styles.done}`;
                 } else if (data[i][j] == 2) {
-                    divs[i][j].className = 'current';
+                    divs[i][j].className = `${Styles.current}`;
                 }
             }
         }

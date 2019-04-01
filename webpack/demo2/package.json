@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "http-server dist",
-    "server": "webpack-dev-server --open --config ./resources/webpack/webpack.dev.js --mode development",
+    "dev": "webpack-dev-server --open --config ./resources/webpack/webpack.dev.js --mode development",
     "build:dev": "webpack --config ./resources/webpack/webpack.dev.js --display-modules",
     "build:prod": "webpack --config ./resources/webpack/webpack.prod.js --display-modules"
   },
@@ -25,7 +25,9 @@
     "http-server": "^0.11.1",
     "jquery": "^3.3.1",
     "mini-css-extract-plugin": "^0.4.1",
+    "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.0",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.22.1",
     "webpack": "^4.16.5",
     "webpack-bundle-analyzer": "^2.13.1",
