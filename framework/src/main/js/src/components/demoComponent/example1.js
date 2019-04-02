@@ -1,5 +1,5 @@
 import React from 'react'
-// import styles from "styles/demoComponent/example1.css";
+import styles2 from 'styles/demoComponent/example1.css'
 import styles from 'styles/demoComponent/example1scss.scss'
 
 function PPHOC(WrappedComponent) {

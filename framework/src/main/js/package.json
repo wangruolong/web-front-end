@@ -6,8 +6,8 @@
   "scripts": {
     "dist": "http-server dist",
     "dev": "cross-env APP_ENV=dev webpack-dev-server --open --config ./resources/webpack/webpack.dev.js --mode development",
-    "build:dev": "cross-env APP_ENV=development webpack --config ./resources/webpack/webpack.dev.js --display-modules",
-    "build:prod": "cross-env APP_ENV=product webpack --config ./resources/webpack/webpack.prod.js --display-modules",
+    "build:dev": "cross-env APP_ENV=dev webpack --config ./resources/webpack/webpack.dev.js --display-modules",
+    "build:prod": "cross-env APP_ENV=prod webpack --config ./resources/webpack/webpack.prod.js --display-modules",
     "lint": "eslint src"
   },
   "husky": {

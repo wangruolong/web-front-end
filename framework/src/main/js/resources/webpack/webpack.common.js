@@ -9,7 +9,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 module.exports = {
 	entry: {
 		app: './src/index.js',
-		venders: ['react-dom','lodash']
+		venders: ['react-dom']
 	},
 	output: {
 		filename: '[name].[chunkhash].js',
@@ -32,18 +32,21 @@ module.exports = {
 			$: 'jquery',
 			join: ['lodash', 'join']
 		}),
+		//抽取css成一个独立的文件xxx.css
 		new MiniCssExtractPlugin({
 			filename: '[name].[contenthash].css'
 		}),
 		//优化压缩CSS资源
 		new OptimizeCSSAssetsPlugin(),
+		//忽略moment的国际化
+		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 		new BundleAnalyzerPlugin()
 	],
 	optimization: {//如果2个模块以上的文件引用了同一个文件，则会抽取出来作为公共文件引用。
 		splitChunks: {
 			cacheGroups: {
 				commons: {
-					name: 'vender',
+					name: 'common',
 					chunks: 'initial',
 					minChunks: 2
 				}
