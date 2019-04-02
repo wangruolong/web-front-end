@@ -8,14 +8,15 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
 	entry: {
-		app: './src/index.js'
+		app: './src/index.js',
+		venders: ['react-dom','lodash']
 	},
 	output: {
 		filename: '[name].[chunkhash].js',
-		path: path.join(process.cwd(), './dist')//输出目录和清理目录要对应
+		path: path.join(process.cwd(), '../webapp')//输出目录和清理目录要对应
 	},
 	plugins: [
-		new CleanWebpackPlugin([path.join(process.cwd(), './dist')], {//输出目录和清理目录要对应
+		new CleanWebpackPlugin([path.join(process.cwd(), '../webapp')], {//输出目录和清理目录要对应
 			allowExternal: true,
 			exclude: ['WEB-INF']
 		}),
@@ -35,8 +36,8 @@ module.exports = {
 			filename: '[name].[contenthash].css'
 		}),
 		//优化压缩CSS资源
-		new OptimizeCSSAssetsPlugin()
-		// new BundleAnalyzerPlugin()
+		new OptimizeCSSAssetsPlugin(),
+		new BundleAnalyzerPlugin()
 	],
 	optimization: {//如果2个模块以上的文件引用了同一个文件，则会抽取出来作为公共文件引用。
 		splitChunks: {
@@ -65,22 +66,7 @@ module.exports = {
 				loader: ['babel-loader','eslint-loader']
 			},
 			{
-				test: /\.css$/,
-				use: [
-					// style-loader把css放到<styles/>里面，而css-Loader则是把css通过<link/>引入。
-					// 'style-loader',
-					MiniCssExtractPlugin.loader,
-					{
-						loader: 'css-loader',
-						options: {
-							modules: true,
-							localIdentName: '[path][name]__[local]--[hash:base64:5]'
-						}
-					}
-				]
-			},
-			{
-				test: /\.scss$/,
+				test: /\.(css|scss)$/,
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
@@ -90,8 +76,10 @@ module.exports = {
 							localIdentName: '[path][name]__[local]--[hash:base64:5]'
 						}
 					},
-					{loader: 'sass-loader'}
-				]
+					{
+						loader: 'sass-loader'
+					}
+				],
 			},
 			{
 				test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/,
