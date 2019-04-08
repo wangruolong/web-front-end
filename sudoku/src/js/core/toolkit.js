@@ -1,3 +1,6 @@
+/**
+ * 矩阵和数组相关的工具
+ */
 const martixToolkit = {
     makeRow(v = 0){
         const array = new Array(9)
@@ -45,13 +48,42 @@ const martixToolkit = {
             [array[i], array[j]] = [array[j], array[i]]
         }
         return array
-    }
+    },
     
     // const a = Array.from({length:9},(v,i)=>i)
     // console.log(a)
     // console.log(shuffle(a))
     // [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
     // [ 0, 7, 6, 4, 3, 5, 2, 8, 1 ]
+    /**
+     * 检查指定位置可以填写数字 n
+     */
+    checkFillable(){
+        return true;
+    }
 
 };
-module.exports = martixToolkit;
+/**
+ * 宫坐标系的工具
+ */
+const boxToolit = {
+
+}
+
+//工具集
+
+
+module.exports = class Toolkit {
+    /**
+     * 矩阵和数组相关的工具
+     */
+    static get matrix(){
+        return martixToolkit
+    }
+    /**
+     * 宫坐标系相关的工具
+     */
+    static get box(){
+        return boxToolit
+    }
+};

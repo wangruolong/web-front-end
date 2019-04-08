@@ -44,13 +44,18 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	const toolkit = __webpack_require__(1)
-	const matrix = toolkit.makeMatrix();
-	// console.log(matrix)
+	const Grid = __webpack_require__(1)
 	
-	// const a = Array.from({length:9},(v,i)=>i)
-	// console.log(a)
-	// console.log(toolkit.shuffle(a))
+	const grid = new Grid($("#container"));
+	grid.build();
+	grid.layout();
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	//生成九宫格
+	const Toolkit = __webpack_require__(2)
 	
 	class Grid {
 	    constructor(container){
@@ -58,7 +63,7 @@
 	    }
 	
 	    build(){
-	        const matrix = toolkit.makeMatrix();
+	        const matrix = Toolkit.matrix.makeMatrix();
 	        const rowGroupClasses = ["row_g_top","row_g_middle","row_g_bottom"];
 	        const colGroupClasses = ["col_g_left","col_g_center","col_g_right"];
 	        const $cells = matrix.map(rowValues => rowValues.map((cellValue,colIndex)=>{
@@ -84,15 +89,15 @@
 	        })
 	    }
 	}
-	
-	const grid = new Grid($("#container"));
-	grid.build();
-	grid.layout();
+	module.exports = Grid
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports) {
 
+	/**
+	 * 矩阵和数组相关的工具
+	 */
 	const martixToolkit = {
 	    makeRow(v = 0){
 	        const array = new Array(9)
@@ -149,7 +154,30 @@
 	    // [ 0, 7, 6, 4, 3, 5, 2, 8, 1 ]
 	
 	};
-	module.exports = martixToolkit;
+	/**
+	 * 宫坐标系的工具
+	 */
+	const boxToolit = {
+	
+	}
+	
+	//工具集
+	
+	
+	module.exports = class Toolkit {
+	    /**
+	     * 矩阵和数组相关的工具
+	     */
+	    static get matrix(){
+	        return martixToolkit
+	    }
+	    /**
+	     * 宫坐标系相关的工具
+	     */
+	    static get box(){
+	        return boxToolit
+	    }
+	};
 
 /***/ })
 /******/ ]);
