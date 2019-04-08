@@ -44,7 +44,8 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	const Grid = __webpack_require__(1)
+	const Toolkit = __webpack_require__(1)
+	const Grid = __webpack_require__(2)
 	
 	const grid = new Grid($("#container"));
 	grid.build();
@@ -52,47 +53,6 @@
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	//生成九宫格
-	const Toolkit = __webpack_require__(2)
-	
-	class Grid {
-	    constructor(container){
-	        this._$container = container;
-	    }
-	
-	    build(){
-	        const matrix = Toolkit.matrix.makeMatrix();
-	        const rowGroupClasses = ["row_g_top","row_g_middle","row_g_bottom"];
-	        const colGroupClasses = ["col_g_left","col_g_center","col_g_right"];
-	        const $cells = matrix.map(rowValues => rowValues.map((cellValue,colIndex)=>{
-	            return $("<span>")
-	            .addClass(colGroupClasses[colIndex % 3])
-	            .text(cellValue)
-	        }))
-	        const $divArray = $cells.map(($spanArray,rowIndex) =>{
-	            return $("<div />")
-	            .addClass("row")
-	            .addClass(rowGroupClasses[rowIndex % 3])
-	            .append($spanArray)
-	        })
-	        this._$container.append($divArray)
-	    }
-	    layout(){
-	        const width = $("span:first", this._$container).width();
-	        $("span", this._$container)
-	        .height(width)
-	        .css({
-	            "line-height":`${width}px`,
-	            "font-size": width <32 ?`${width/2}px`:""
-	        })
-	    }
-	}
-	module.exports = Grid
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports) {
 
 	/**
@@ -145,13 +105,21 @@
 	            [array[i], array[j]] = [array[j], array[i]]
 	        }
 	        return array
-	    }
+	    },
 	    
 	    // const a = Array.from({length:9},(v,i)=>i)
 	    // console.log(a)
 	    // console.log(shuffle(a))
 	    // [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
 	    // [ 0, 7, 6, 4, 3, 5, 2, 8, 1 ]
+	    /**
+	     * 检查指定位置可以填写数字 n
+	     */
+	    checkFillable(matrix, n, rowIndex, colIndex){
+	        const row = matrix[rowIndex];
+	        const column = this.makeRow().map((v,i)=>matrix[i][colIndex]);
+	        return true;
+	    }
 	
 	};
 	/**
@@ -178,6 +146,47 @@
 	        return boxToolit
 	    }
 	};
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	//生成九宫格
+	const Toolkit = __webpack_require__(1)
+	
+	class Grid {
+	    constructor(container){
+	        this._$container = container;
+	    }
+	
+	    build(){
+	        const matrix = Toolkit.matrix.makeMatrix();
+	        const rowGroupClasses = ["row_g_top","row_g_middle","row_g_bottom"];
+	        const colGroupClasses = ["col_g_left","col_g_center","col_g_right"];
+	        const $cells = matrix.map(rowValues => rowValues.map((cellValue,colIndex)=>{
+	            return $("<span>")
+	            .addClass(colGroupClasses[colIndex % 3])
+	            .text(cellValue)
+	        }))
+	        const $divArray = $cells.map(($spanArray,rowIndex) =>{
+	            return $("<div />")
+	            .addClass("row")
+	            .addClass(rowGroupClasses[rowIndex % 3])
+	            .append($spanArray)
+	        })
+	        this._$container.append($divArray)
+	    }
+	    layout(){
+	        const width = $("span:first", this._$container).width();
+	        $("span", this._$container)
+	        .height(width)
+	        .css({
+	            "line-height":`${width}px`,
+	            "font-size": width <32 ?`${width/2}px`:""
+	        })
+	    }
+	}
+	module.exports = Grid
 
 /***/ })
 /******/ ]);
