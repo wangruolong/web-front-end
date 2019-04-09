@@ -6,7 +6,7 @@ module.exports = {
     output:{
         filename: '[name].js'
     },
-    devtool:'inline-source-map',
+    devtool:'source-map',
     resolve:{
         extensions:['.js']
     },
