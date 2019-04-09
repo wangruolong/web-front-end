@@ -58,16 +58,28 @@ body {
 
             }
             &.fixed{
-                background: #AAAAAA;
+                background: #eeeeee;
             }
             &.empty{
                 color:white;
             }
+            &.error {
+                background: lightpink;
+                &.empty {
+                    color:lightpink;//不把0显示出来，因为0是白色的。
+                }
+            }
             &.mark1{
-                background:lightpink;
+                background:lightblue;
+                &.empty {
+                    color:lightblue;//不把0显示出来，因为0是白色的。
+                }
             }
             &.mark2{
                 background:lightgreen;
+                &.empty {
+                    color:lightgreen;//不把0显示出来，因为0是白色的。
+                }
             }
             
         }

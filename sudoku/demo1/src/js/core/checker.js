@@ -91,24 +91,25 @@ class Checker {
     }
 
 }
+module.exports = Checker;
 
-const Generator = require("./generator")
-const gen = new Generator();
-gen.generate();
-const matrix = gen.matrix;
-console.log("gen matrix");
-console.log(matrix)
-const checker = new Checker(matrix);
-console.log("check result1111111111",checker.check())
-console.log(checker.matrixMarks);
+// const Generator = require("./generator")
+// const gen = new Generator();
+// gen.generate();
+// const matrix = gen.matrix;
+// console.log("gen matrix");
+// console.log(matrix)
+// const checker = new Checker(matrix);
+// console.log("check result1111111111",checker.check())
+// console.log(checker.matrixMarks);
 
-matrix[1][1] = 0;
-matrix[2][3] = matrix[3][5] = 5;
-console.log("gen matrix");
-console.log(matrix)
-const checker2 = new Checker(matrix);
-console.log("check result2222222222",checker2.check());
-console.log(checker2.matrixMarks);
+// matrix[1][1] = 0;
+// matrix[2][3] = matrix[3][5] = 5;
+// console.log("gen matrix");
+// console.log(matrix)
+// const checker2 = new Checker(matrix);
+// console.log("check result2222222222",checker2.check());
+// console.log(checker2.matrixMarks);
 // gen matrix
 // [ [ 1, 7, 8, 3, 6, 5, 4, 2, 9 ],
 //   [ 5, 2, 3, 7, 9, 4, 8, 1, 6 ],
