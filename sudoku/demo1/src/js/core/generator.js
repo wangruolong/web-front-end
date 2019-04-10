@@ -55,7 +55,9 @@ class Generator{
     }
 }
 
+module.exports = Generator;
+
 // const generator =new Generator();
 // generator.generate();
 // console.log(generator.matrix);
-module.exports = Generator
+

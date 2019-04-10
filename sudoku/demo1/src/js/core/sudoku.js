@@ -3,7 +3,7 @@
 // 2.随机去除部分数据：按比例
 
 const Generator = require("./generator");
-module.exports = class Sudoku {
+class Sudoku {
     constructor(){
         // 生成完成的解决方案
         const generator = new Generator();
@@ -17,3 +17,5 @@ module.exports = class Sudoku {
         }))
     }
 }
+
+module.exports = Sudoku;

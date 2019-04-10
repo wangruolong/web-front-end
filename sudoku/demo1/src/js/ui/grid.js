@@ -1,6 +1,4 @@
 //生成九宫格
-const Toolkit = require("../core/toolkit")
-const Generator = require("../core/generator")
 const Sudoku = require("../core/sudoku")
 const Checker = require("../core/checker")
 class Grid {
@@ -72,7 +70,7 @@ class Grid {
         })
     }
 
-    // 充值当前迷盘到初始状态
+    // 重置当前迷盘到初始状态
     reset(){
         this._$container.find("span:not(.fixed)")
         .removeClass("error mark1 mark2")
@@ -100,4 +98,4 @@ class Grid {
         })
     }
 }
-module.exports = Grid
+module.exports = Grid;

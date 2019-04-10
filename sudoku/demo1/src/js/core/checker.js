@@ -91,6 +91,7 @@ class Checker {
     }
 
 }
+
 module.exports = Checker;
 
 // const Generator = require("./generator")
