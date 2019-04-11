@@ -15,9 +15,9 @@ function checkArray(array) {
             continue;
         }
         // 是否有重复： i+1 ~ 9，是否和i位置的数据重复
-        for(let j=i+1;j<length;j++){
-            if(v===array[j]){
-                marks[i]=marks[j]=false;
+        for(let j = i+1; j < length; j++){
+            if( v === array[j] ){
+                marks[i] = marks[j] = false;
             }
         }
     }
@@ -32,8 +32,8 @@ const Toolkit = require("./toolkit")
 // 输出：检查是否成功、marks对应位置中的值是false是错误，true是正确。
 class Checker {
     constructor(matrix){
-        this._matrix = matrix;
-        this._matrixMarks  = Toolkit.matrix.makeMatrix(true);
+        this._matrix = matrix;//矩阵
+        this._matrixMarks  = Toolkit.matrix.makeMatrix(true);//与矩阵一一对应的标记过的矩阵
     }
     get matrixMarks(){
         return this._matrixMarks;
@@ -53,10 +53,10 @@ class Checker {
 
     }
     checkRows(){
-        for(let rowIndex=0;rowIndex<9;rowIndex++){
-            const row = this._matrix[rowIndex];
-            const marks = checkArray(row);
-            for(let colIndex=0;colIndex<marks.length;colIndex++){
+        for(let rowIndex=0; rowIndex < 9; rowIndex++){
+            const row = this._matrix[rowIndex];//获取每一行数组
+            const marks = checkArray(row);//检查每一行数组后返回对应的状态标记
+            for(let colIndex=0; colIndex < marks.length;colIndex++){//然后循环这个标记数组把相应的状态更新的大数组里面
                 if(!marks[colIndex]){
                     this._matrixMarks[rowIndex][colIndex] = false;
                 }
@@ -64,27 +64,27 @@ class Checker {
         }
     }
     checkCols(){
-        for(let colIndex = 0; colIndex<9;colIndex++){
-            const cols = [];
-            for(let rowIndex = 0;rowIndex<9;rowIndex++){
+        for(let colIndex = 0; colIndex < 9; colIndex++){//循环从第0列到第8列
+            const cols = [];//用来存储每一列的数组
+            for(let rowIndex = 0; rowIndex < 9; rowIndex++){
                 cols[rowIndex] = this._matrix[rowIndex][colIndex];
             }
-            const marks = checkArray(cols);
-            for(let rowIndex = 0;rowIndex < marks.length; rowIndex++){
-                if(!marks[rowIndex]){
+            const marks = checkArray(cols);//检查每一列
+            for(let rowIndex = 0; rowIndex < marks.length; rowIndex++){
+                if(!marks[rowIndex]){//把这一列的检查结果同步到大数组里面
                     this._matrixMarks[rowIndex][colIndex] = false;
                 }
             }
         }
     }
     checkBoxes(){
-        for(let boxIndex = 0;boxIndex < 9;boxIndex++){
-            const boxes = Toolkit.box.getBoxCells(this._matrix,boxIndex);
-            const marks = checkArray(boxes);
-            for(let cellIndex = 0;cellIndex<9;cellIndex++){
+        for(let boxIndex = 0; boxIndex < 9; boxIndex++){//从第0宫到第8宫
+            const boxes = Toolkit.box.getBoxCells(this._matrix,boxIndex);//在矩阵中根据矩阵和宫序号获取宫
+            const marks = checkArray(boxes);//检查这一宫的数据是否正确
+            for(let cellIndex = 0; cellIndex < 9; cellIndex++){//循环宫内序号
                 if(!marks[cellIndex]){
-                    const {rowIndex,colIndex}=Toolkit.box.convertFromBoxIndex(boxIndex,cellIndex);
-                    this._matrixMarks[rowIndex][colIndex] = false;
+                    const {rowIndex,colIndex}=Toolkit.box.convertFromBoxIndex(boxIndex,cellIndex);//把宫内序号转换成行列坐标
+                    this._matrixMarks[rowIndex][colIndex] = false;//把宫内的标记状态同步到大数组中
                 }
             }
         }

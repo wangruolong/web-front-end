@@ -11,6 +11,7 @@ class Sudoku {
         this.solutionMatrix = generator.matrix;
     }
     make(level = 5){
+        // 挖空算法
         // const shouldRid = Math.random()*9 <level
         this.puzzleMatrix = this.solutionMatrix.map(row=>row.map(cell=>{
             return Math.random()*9 <level?0:cell;//九分之五的概率返回0
