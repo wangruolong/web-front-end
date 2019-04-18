@@ -26,11 +26,11 @@ function checkArray(array) {
 // console.log(checkArray([1,2,3,4,5,6,7,8,9]))
 // console.log(checkArray([1,2,3,4,0,6,7,8,9]))
 // console.log(checkArray([1,2,3,4,0,6,2,2,9]))
-const Toolkit = require("./toolkit")
+import Toolkit from "./toolkit"
 // 输入：matrix，用户完成呢过的数独数据，9x9
 // 处理：对matrix行、列、宫进行检查，并填写marks
 // 输出：检查是否成功、marks对应位置中的值是false是错误，true是正确。
-class Checker {
+export class Checker {
     constructor(matrix){
         this._matrix = matrix;//矩阵
         this._matrixMarks  = Toolkit.matrix.makeMatrix(true);//与矩阵一一对应的标记过的矩阵
@@ -92,7 +92,7 @@ class Checker {
 
 }
 
-module.exports = Checker;
+export default Checker;
 
 // const Generator = require("./generator")
 // const gen = new Generator();

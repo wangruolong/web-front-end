@@ -2,7 +2,7 @@
 // 1.点击cell弹出popup
 // 2.点击popup面板，得到数字n，把数字填到cell中
 
-class PopupNumbers {
+export class PopupNumbers {
     constructor($panel){
         this._$panel = $panel.hide().removeClass("hidden");
         this._$panel.on("click","span",e=>{
@@ -50,4 +50,4 @@ class PopupNumbers {
 
 }
 
-module.exports = PopupNumbers;
+export default PopupNumbers;

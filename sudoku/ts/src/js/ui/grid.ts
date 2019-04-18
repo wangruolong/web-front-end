@@ -1,6 +1,6 @@
 //生成九宫格
-const Sudoku = require("../core/sudoku")
-const Checker = require("../core/checker")
+import Sudoku from "../core/sudoku"
+import Checker from "../core/checker"
 class Grid {
     constructor(container){
         this._$container = container;
@@ -98,4 +98,5 @@ class Grid {
         })
     }
 }
-module.exports = Grid;
+export { Grid };
+export default Grid;

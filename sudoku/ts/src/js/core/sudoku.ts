@@ -2,8 +2,8 @@
 // 1.生成完成的解决方案：Generator
 // 2.随机去除部分数据：按比例
 
-const Generator = require("./generator");
-class Sudoku {
+import Generator from "./generator";
+export class Sudoku {
     constructor(){
         // 生成完成的解决方案
         const generator = new Generator();
@@ -19,4 +19,4 @@ class Sudoku {
     }
 }
 
-module.exports = Sudoku;
+export default Sudoku;

@@ -1,6 +1,7 @@
 //生成数独解决方案
-const Toolkit = require("./toolkit")
-class Generator{
+import Toolkit from "./toolkit"
+
+export class Generator{
     generate(){
         while(!this.internalGenerate()){
             console.warn("try again")
@@ -69,7 +70,7 @@ class Generator{
     }
 }
 
-module.exports = Generator;
+export default Generator;
 
 // const generator =new Generator();
 // generator.generate();

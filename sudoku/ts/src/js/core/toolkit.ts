@@ -107,7 +107,7 @@ const boxToolkit = {
 
 //工具集
 
-module.exports = class Toolkit {
+export class Toolkit {
     /**
      * 矩阵和数组相关的工具
      */
@@ -121,3 +121,4 @@ module.exports = class Toolkit {
         return boxToolkit
     }
 };
+export default Toolkit;
