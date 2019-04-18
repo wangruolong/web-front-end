@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jquery": "^2.0.53",
     "babel-core": "^6.26.3",
     "babel-loader": "^6.4.1",
     "babel-preset-es2015": "^6.24.1",

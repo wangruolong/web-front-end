@@ -4,6 +4,8 @@
 
 import Generator from "./generator";
 export class Sudoku {
+    solutionMatrix;
+    puzzleMatrix;
     constructor(){
         // 生成完成的解决方案
         const generator = new Generator();

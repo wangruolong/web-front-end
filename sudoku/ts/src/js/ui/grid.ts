@@ -2,6 +2,7 @@
 import Sudoku from "../core/sudoku"
 import Checker from "../core/checker"
 class Grid {
+    private _$container;
     constructor(container){
         this._$container = container;
     }
