@@ -9,7 +9,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 module.exports = {
 	entry: {
 		app: './src/index.js',
-		venders: ['react-dom']
+		venders: ['react-dom','babel-polyfill','react-router','redux-saga']
 	},
 	output: {
 		filename: '[name].[chunkhash].js',
@@ -28,9 +28,10 @@ module.exports = {
 			'process.env.APP_ENV': JSON.stringify(process.env.APP_ENV)
 		}),
 		new webpack.ProvidePlugin({//在全局范围内可以使用以下key
-			_: 'lodash',
-			$: 'jquery',
-			join: ['lodash', 'join']
+			// _: 'lodash',
+			// $: 'jquery',
+			// join: ['lodash', 'join']
+			// 注意：lodash不能这样引用，而是应该需要什么引用什么
 		}),
 		//抽取css成一个独立的文件xxx.css
 		new MiniCssExtractPlugin({

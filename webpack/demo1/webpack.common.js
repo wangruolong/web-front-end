@@ -27,7 +27,8 @@ module.exports = {
         //可以在代码中直接使用这些变量。
         new webpack.ProvidePlugin({
             // _: 'lodash',
-            join: ['lodash', 'join']
+            // join: ['lodash', 'join']
+            // 注意：lodash不能这样引用，而是应该需要什么引用什么
         })
     ],
     //等价于webpack 3的plugin webpack.optimize.CommonsChunkPlugin

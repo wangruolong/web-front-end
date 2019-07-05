@@ -1,16 +1,20 @@
 /**
  * 矩阵和数组相关的工具
  */
-const matrixToolkit  = {
-    makeRow(v: any = 0){
+class matrixToolkit {
+    static makeRow(): number[];
+    static makeRow<T>(v: T ): T[];
+    static makeRow(v: any = 0 ){
         const array = new Array(9)
         array.fill(v)
         return array
-    },
-    makeMatrix(v: any = 0) {
-        //Array.from第一个参数是数组长度等参数，第二个参数是一个map函数，用来对数组中的每个元素进行处理。
+    }
+
+    static makeMatrix(): number[][];
+    static makeMatrix<T>(v: T): <T>[][];
+    static makeMatrix(v: any = 0) {
         return Array.from({length:9},()=>this.makeRow(v))
-    },
+    }
     // const a = makeMatrix()
     // a[0][1]=2
     // console.log(a)
@@ -47,7 +51,7 @@ const matrixToolkit  = {
             [array[i], array[j]] = [array[j], array[i]]
         }
         return array
-    },
+    }
     // const a = Array.from({length:9},(v,i)=>i)
     // console.log(a)
     // console.log(shuffle(a))
