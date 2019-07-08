@@ -9,7 +9,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 module.exports = {
 	entry: {
 		app: './src/index.js',
-		venders: ['react-dom','babel-polyfill','react-router','redux-saga']
+		venders: ['react-dom','core-js','react-router','redux-saga']
 	},
 	output: {
 		filename: '[name].[chunkhash].js',
@@ -44,15 +44,18 @@ module.exports = {
 		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 		new BundleAnalyzerPlugin()
 	],
-	optimization: {//如果2个模块以上的文件引用了同一个文件，则会抽取出来作为公共文件引用。
+	optimization: {
 		splitChunks: {
+			//如果2个模块以上的文件引用了同一个文件，则会抽取出来作为公共文件引用。
 			cacheGroups: {
 				commons: {
 					name: 'common',
 					chunks: 'initial',
 					minChunks: 2
 				}
-			}
+			},
+			// 把全部加入比较
+			chunks: 'all'
 		}
 	},
 	resolve: {
