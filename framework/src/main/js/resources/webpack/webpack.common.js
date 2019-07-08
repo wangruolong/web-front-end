@@ -22,6 +22,7 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			title: '网站标题',
+			description: '网站描述',
 			template: path.join(__dirname, '../template/index-template.html')
 		}),
 		new webpack.DefinePlugin({

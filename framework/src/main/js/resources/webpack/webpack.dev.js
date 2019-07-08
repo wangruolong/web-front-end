@@ -10,18 +10,18 @@ module.exports = merge(common, {
 	devServer: {
 		disableHostCheck: true,
 		// host: '0.0.0.0'
-		// host:(function getIPAdress(){  
-		// 	var interfaces = require('os').networkInterfaces()  
-		// 	for(var devName in interfaces){  
-		// 		  var iface = interfaces[devName]  
-		// 		  for(var i=0;i<iface.length;i++){  
-		// 			   var alias = iface[i]
-		// 			   if(alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal){  
-		// 					 return alias.address  
-		// 			   }
-		// 		  }
-		// 	}
-		// })()
+		host:(function getIPAdress(){  
+			var interfaces = require('os').networkInterfaces()  
+			for(var devName in interfaces){  
+				  var iface = interfaces[devName]  
+				  for(var i=0;i<iface.length;i++){  
+					   var alias = iface[i]
+					   if(alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal){  
+							 return alias.address  
+					   }
+				  }
+			}
+		})()
 	},
 	plugins: [
 		// new webpack.DefinePlugin({//定义环境变量
