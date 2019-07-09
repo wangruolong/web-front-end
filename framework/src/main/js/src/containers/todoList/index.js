@@ -6,14 +6,14 @@ import TodoListDump from 'components/todoList'
 
 const mapStateToProps = state => {
 	return {
-		todos: state.todos
+		todoList: state.todos.get('todoList').toJS()
 	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onTodoClick: (id) => {
-			dispatch(toggleTodo(id))
+		onTodoClick: (args) => {
+			dispatch(toggleTodo(args))
 		},
 		onAddTodo: (id, text, completed) =>{
 			dispatch(addTodo(id, text, completed))

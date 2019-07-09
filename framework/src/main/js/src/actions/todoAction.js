@@ -1,21 +1,15 @@
-export const addTodo = (id, text, completed) => {
-	let payload = {
-		id,
-		text,
-		completed
-	}
+import {ADD_TODO,TOGGLE_TODO} from './actionTypes'
+
+export const addTodo = (args) => {
 	return {
-		type: 'ADD_TODO',
-		payload
+		type: ADD_TODO,
+		payload: args
 	}
 }
 
-export const toggleTodo = (id) => {
-	let payload = {
-		id
-	}
+export const toggleTodo = (args) => {
 	return {
-		type: 'TOGGLE_TODO',
-		payload
+		type: TOGGLE_TODO,
+		payload:args
 	}
 }
