@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
 	entry: {
@@ -42,7 +43,14 @@ module.exports = {
 		new OptimizeCSSAssetsPlugin(),
 		//忽略moment的国际化
 		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-		new BundleAnalyzerPlugin()
+		new BundleAnalyzerPlugin(),
+		new CopyWebpackPlugin([{
+			from: path.join(__dirname, '../polyfill'),
+			to: path.join(process.cwd(), '../webapp/polyfill')
+		}], {
+			ignore: [],
+			copyUnmodified: true
+		})
 	],
 	optimization: {
 		splitChunks: {
@@ -74,7 +82,7 @@ module.exports = {
 				loader: ['babel-loader','eslint-loader']
 			},
 			{
-				test: /\.(css|scss)$/,
+				test: /\.(sc|c)ss$/,
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
@@ -91,7 +99,12 @@ module.exports = {
 			},
 			{
 				test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/,
-				use: ['file-loader']
+				use: [{
+					loader:'file-loader',
+					options:{
+						outputPath:'assets/'
+					}
+				}]
 			},
 			{
 				test: /\.xml$/,
