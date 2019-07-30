@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-
+import WithImmutablePropsToJs from 'with-immutable-props-to-js'
 import IndexDump from 'components'
 
 
@@ -16,6 +16,6 @@ const mapDispatchToProps = dispatch => {
 const IndexSmart = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(IndexDump)
+)(WithImmutablePropsToJs(IndexDump))
 
 export default IndexSmart
