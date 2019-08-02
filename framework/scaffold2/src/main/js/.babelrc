@@ -1,0 +1,21 @@
+{
+  "presets": [
+    ["env",{
+      "modules": false,// 模块化交给webpack处理
+      "useBuiltIns":"usage",// "usage" | "entry" | false, defaults to false.
+      "targets": {"browsers": ["safari >= 7", "ie>=8"]}
+    }],
+    "react",
+    "stage-2"
+  ],
+  "plugins": [
+    "add-module-exports",// 转义import和export
+    "transform-runtime",// 转义generator
+    "transform-decorators-legacy",// 转义@
+    "transform-es3-member-expression-literals",// 支持ie
+    "transform-es3-property-literals",// 支持ie
+    ["transform-es2015-classes", { "loose": true }],
+    "transform-proto-to-assign"
+  ]
+}
+// 是否可以只用useBuiltIns+babel-polyfill不用transform-runtime？不行。一个典型的场景就是前者没有转义generator，后者有对静态的generator做转义。
