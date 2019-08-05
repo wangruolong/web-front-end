@@ -42,7 +42,7 @@ if (process.env.APP_ENV === 'dev') {
 	}
 	App = ProdApp
 }
-
+// import {baymaxReducer} from 'baymax'
 const store = finalCreateStore(rootReducer)
 
 sagaMiddleware.run(rootSaga)
