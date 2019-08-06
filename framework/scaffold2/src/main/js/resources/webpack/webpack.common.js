@@ -6,6 +6,7 @@ const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const SpritesmithPlugin = require('webpack-spritesmith')
 
 module.exports = {
 	entry: {
