@@ -50,6 +50,26 @@ module.exports = {
 		}], {
 			ignore: [],
 			copyUnmodified: true
+		}),
+		// 图片优化。通过组合雪碧图来实现
+		new SpritesmithPlugin({
+			src: {
+				cwd: path.join(process.cwd(), 'src/assets'),
+				glob: '*.png'
+			},
+			target: {
+				image: path.join(process.cwd(), 'src/styles/common/sprite/sprite.png'),
+				css: path.join(process.cwd(), 'src/styles/common/sprite/sprite.css')
+			},
+			//设置sprite.png的引用格式，会自己加入sprite.css的头部
+			apiOptions: {
+				cssImageRef: './sprite.png'
+			},
+			//配置spritesmith选项，非必选
+			spritesmithOptions: {
+			  algorithm: 'top-down',//设置图标的排列方式
+			  padding: 4 //每张小图的补白,避免雪碧图中边界部分的bug
+			}
 		})
 	],
 	optimization: {
@@ -106,14 +126,28 @@ module.exports = {
 					{ loader: 'less-loader', options: { javascriptEnabled: true } }
 				]
 			},
-			{
-				test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/,
-				use: [{
-					loader:'file-loader',
-					options:{
-						outputPath:'assets/'
-					}
+			{	// 图片优化。通过url-loader配合file-loader进行实现。
+				// 小于8k的图片可以转成base64一起打入css，大于的则用file-loader加载，这样可以减少图片请求数，并兼顾了css文件不要太大。
+				test:/\.(jpg|png|svg|gif)/,
+				use:[{
+				  loader:'url-loader',
+				  options:{
+						limit:8129,//小于limit限制8k 的图片将转为base64嵌入引用位置
+						fallback:'file-loader',//大于limit限制的将转交给指定的loader处理
+						outputPath:'imgs/'//options会直接传给fallback指定的loader
+				  }
 				}]
+			},
+			{
+				test: /\.(woff|woff2|eot|ttf|otf)$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							outputPath: 'assets/'
+						}
+					}
+				]
 			},
 			{
 				test: /\.xml$/,
