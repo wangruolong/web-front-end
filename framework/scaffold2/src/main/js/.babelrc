@@ -12,6 +12,7 @@
     "add-module-exports",// 转义import和export
     "transform-runtime",// 转义generator
     "transform-decorators-legacy",// 转义@
+    "transform-class-properties",// 转义写在class里面的属性
     "transform-es3-member-expression-literals",// 支持ie
     "transform-es3-property-literals",// 支持ie
     ["transform-es2015-classes", { "loose": true }],

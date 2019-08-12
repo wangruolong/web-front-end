@@ -11,9 +11,15 @@ class Todo extends Component{
 		}
 		this.props.onClick(args)
 	}
+	componentWillMount(){
+		console.log('2222222222 componentWillMount')
+	}
+	componentDidMount(){
+		console.log('2222222222 componentDidMount')
+	}
 	render(){
+		console.log('2222222222 render ')
 		let {completed,text}=this.props
-		console.log('1111111111',completed,text)
 		return <li onClick={()=>{this.handleClick()}} style={{textDecoration: completed ? 'line-through' : 'none'}}>
 			{text}
 		</li>
