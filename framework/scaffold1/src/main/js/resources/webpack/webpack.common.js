@@ -43,7 +43,7 @@ module.exports = {
 		new OptimizeCSSAssetsPlugin(),
 		//忽略moment的国际化
 		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-		new BundleAnalyzerPlugin(),
+		// new BundleAnalyzerPlugin(),
 		new CopyWebpackPlugin([{
 			from: path.join(__dirname, '../polyfill'),
 			to: path.join(process.cwd(), '../webapp/polyfill')

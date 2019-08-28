@@ -5,17 +5,16 @@ import PropTypes from 'prop-types'
 class Index extends Component {
 	render() {
     	return (
-    		<div>
+    		<div style={{border:'1px solid red'}}>
     			<h1>Index</h1>
     			<ul>
-    				<li>
-    					<Link to="/todo_list">todo_list</Link>
-    				</li>
-    				<li>
-    					<Link to="/example1">example1</Link>
-    				</li>
+    				<li> <Link to="/todo_list">todo_list</Link> </li>
+    				<li> <Link to="/example1">example1</Link> </li>
+					<li> <Link to="/example2">example1</Link> </li>
     			</ul>
-    			{this.props.children}
+				<div style={{border:'1px solid blue'}}>
+					{this.props.children}
+				</div>
     		</div>
     	)
 	}
