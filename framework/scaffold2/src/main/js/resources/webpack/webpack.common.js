@@ -25,7 +25,8 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			title: '网站标题',
 			description: '网站描述',
-			template: path.join(__dirname, '../template/index-template.html')
+			template: path.join(__dirname, '../template/index-template.html'),
+			hash: true
 		}),
 		new webpack.DefinePlugin({
 			'process.env.APP_ENV': JSON.stringify(process.env.APP_ENV)
@@ -44,7 +45,7 @@ module.exports = {
 		new OptimizeCSSAssetsPlugin(),
 		//忽略moment的国际化
 		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-		new BundleAnalyzerPlugin(),
+		// new BundleAnalyzerPlugin(),
 		new CopyWebpackPlugin([{
 			from: path.join(__dirname, '../polyfill'),
 			to: path.join(process.cwd(), '../webapp/polyfill')

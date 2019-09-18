@@ -6,3 +6,11 @@ demo4/dist/
 .vscode/
 framework/src/main/webapp/
 framework/scaffold2/src/main/webapp/
+framework/scaffold1/.factorypath
+framework/scaffold1/.classpath
+framework/scaffold1/.project
+framework/scaffold1/.settings/
+framework/scaffold2/.settings/
+framework/scaffold2/.project
+framework/scaffold2/.factorypath
+framework/scaffold2/.classpath
