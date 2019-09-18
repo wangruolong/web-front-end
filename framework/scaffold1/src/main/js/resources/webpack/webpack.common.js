@@ -24,7 +24,8 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			title: '网站标题',
 			description: '网站描述',
-			template: path.join(__dirname, '../template/index-template.html')
+			template: path.join(__dirname, '../template/index-template.html'),
+			hash: true// 增加hash让js每次都是获取最新的。
 		}),
 		new webpack.DefinePlugin({
 			'process.env.APP_ENV': JSON.stringify(process.env.APP_ENV)
