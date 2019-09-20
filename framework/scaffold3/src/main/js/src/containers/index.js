@@ -1,6 +1,7 @@
 import {connect} from 'react-redux'
 import WithImmutablePropsToJs from 'with-immutable-props-to-js'
 import IndexDump from 'components'
+import {setGlobalData} from 'actions/globalAction'
 
 
 const mapStateToProps = state => {
@@ -11,6 +12,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
+		setGlobalData:(args)=>{
+			dispatch(setGlobalData(args))
+		}
 	}
 }
 

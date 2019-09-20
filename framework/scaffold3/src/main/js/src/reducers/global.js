@@ -1,13 +1,15 @@
 import {fromJS} from 'immutable'
 import {REQUEST_SUFFIX, SUCCESS_SUFFIX, FAILURE_SUFFIX} from 'actions/actionTypes'
-import {SWITCH_TAB, SET_UC_INFO} from 'actions/actionTypes'
+import {SET_GLOBAL_DATA, SET_UC_INFO} from 'actions/actionTypes'
 import {message} from 'fish'
 
 let initState = fromJS({
 	loading:{
 		isLoading: false,// 是否加载中
 		requestCount:0// 当前请求的数量
-	}
+	},
+	model:'',// 可以有多种显示样式，app是完整的包括登录退出功能，cmpt是组件模式只显除菜单之外的数据，未来可能还有什么自定义显示样式。
+	sdpAppId:''
 })
 
 // 不需要loading的actionType
@@ -27,9 +29,9 @@ const global = (state = initState, action) => {
 	}
 
 	switch(actionType){
-		case 'ActionType':{// 其他需要放入global的数据
-			let {data} = action.payload
-			return state.setIn(['data'], data)
+		case SET_GLOBAL_DATA: {// 其他需要放入global的数据
+			let  {field,value}  = action.payload
+			return state.setIn([field], value)
 		}
 		default:{// 处理全局loading
 			if(noLoadingList.indexOf(actionType)>-1){

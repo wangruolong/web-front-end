@@ -11,31 +11,12 @@ export default class Home extends Component{
 		loginByUCKey: PropTypes.func,
 		setUcInfo: PropTypes.func,
 		children: PropTypes.node,
-		checkAuth: PropTypes.object
+		checkAuth: PropTypes.object,
 	}
 	componentDidMount(){
-		let result = {}
-		let { query = {}, pathname = '' } = this.props.location
-		let { type, key, model} = query
-		//1.处理sdp-app-id
-		let sdpAppId = query['sdp-app-id'] || ''
-		if(sdpAppId !==''){
-			authUtil.setLocalStorage('sdp-app-id',sdpAppId)
-		}
-		//2.处理model
-		if(model && model!==''){ // 可以有多种显示样式，app是完整的包括登录退出功能，cmpt是组件模式只显除菜单之外的数据，未来可能还有什么自定义显示样式。
-			authUtil.setLocalStorage('model', model)
-		}else{
-			let modelType = authUtil.getLocalStorage('model')
-			if(modelType && modelType!=='') {
-				model = modelType
-			}else{
-				model = 'app'
-				authUtil.setLocalStorage('model', model)
-			}
-		} 
-		result['model'] = model
-		//3.处理用户认证信息
+		let { query = {} } = this.props.location
+		let { type, key } = query
+		// 处理登录方式
 		if(type){// 如果有type可以进行登录
 			if(type=='uckey'){
 				console.log('login by uckey, key is ', key)
@@ -59,7 +40,6 @@ export default class Home extends Component{
 	render(){
 		let {checkAuth = {}} = this.props
 		let {isExpires = false} = checkAuth
-		console.log('xxxxxxxxxx',isExpires)
 		if(isExpires){
 			return <div>{this.props.children}</div>
 		}else{

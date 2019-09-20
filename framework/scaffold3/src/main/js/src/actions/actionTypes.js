@@ -12,3 +12,5 @@ export const UC_LOGIN_BY_UCKEY = 'UC_LOGIN_BY_UCKEY'
 export const SET_UC_INFO = 'SET_UC_INFO'
 export const GET_IDENTIFY_CODE = 'GET_IDENTIFY_CODE'
 export const REFRESH_TOKEN = 'REFRESH_TOKEN'
+
+export const SET_GLOBAL_DATA = 'SET_GLOBAL_DATA' //设置全局数据

@@ -7,7 +7,8 @@ export default class Login extends Component {
 	static propTypes = {
 		login: PropTypes.func,
 		identifyCodePath: PropTypes.string,
-		getIdentifyCode: PropTypes.func
+		getIdentifyCode: PropTypes.func,
+		location: PropTypes.object
 	}
 	constructor(){
 		super()
@@ -16,6 +17,7 @@ export default class Login extends Component {
 		}
 	}
 	componentDidMount(){
+		
 	}
 	emitEmptyUserName = () => {
 		this.userNameInput.focus()
@@ -59,6 +61,8 @@ export default class Login extends Component {
 	}
 
 	render(){
+		let { query = {} } = this.props.location
+		let { type, key, model} = query
 		const { userName, password } = this.state
 		const userNameSuffix = userName ? <Icon type="close-circle" onClick={this.emitEmptyUserName} /> : null
 		const passwordSuffix = password ? <Icon type="close-circle" onClick={this.emitEmptyPassword} /> : null

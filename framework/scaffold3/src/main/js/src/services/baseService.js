@@ -15,7 +15,7 @@ export default class baseService {
 			'Accept': 'application/json',
 			'Content-Type': 'application/json; charset=UTF-8'
 		}
-		let sdpAppId = authUtils.getLocalStorage('sdp-app-id') || ''
+		let sdpAppId = authUtils.getLocalStorage('sdpAppId') || ''
 		if(sdpAppId!==''){
 			headers['sdp-app-id']=sdpAppId
 		}else{//如果获取不到sdp-app-id则从配置文件里面读取

@@ -1,7 +1,8 @@
 import {connect} from 'react-redux'
 import WithImmutablePropsToJs from 'with-immutable-props-to-js'
 import HomeDump from 'components/home'
-import {setUcInfo} from 'actions/ucAction'
+import {setUcInfo } from 'actions/ucAction'
+import {setGlobalData} from 'actions/globalAction'
 
 
 const mapStateToProps = state => {
@@ -12,8 +13,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		setUcInfo:(args)=>{
+		setUcInfo: (args) => {
 			dispatch(setUcInfo(args))
+		},
+		setGlobalData: (args) => {
+			dispatch(setGlobalData(args))
 		}
 	}
 }
