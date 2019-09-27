@@ -4,6 +4,7 @@ import IndexSmart from './containers'
 import TodoListSmart from './containers/todoList'
 import Example1 from './components/demoComponent/example1'
 import Example2 from './components/demoComponent/example2'
+import Example3 from './components/demoComponent/example3'
 
 const Routes = () => (
 	<Router history={hashHistory}>
@@ -12,6 +13,7 @@ const Routes = () => (
 			<Route path="todo_list" component={TodoListSmart} />
 			<Route path="example1" component={Example1} />
 			<Route path="example2" component={Example2} />
+			<Route path="example3" component={Example3} />
 		</Route>
 	</Router>
 )

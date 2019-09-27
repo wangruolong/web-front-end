@@ -4,22 +4,19 @@ export default class Example2 extends Component{
 	constructor(props){
 		super(props)
 		this.state={
-			// data:['a','b','c','d'],//1.为什么需要加key2.为什么不能用idx作为key
-			data:[{val:'a',id:'1'},{val:'b',id:'2'},{val:'c',id:'3'},{val:'d',id:'4'}]//3.要用id作为key
+			data:['a','b','c','d'],//1.为什么需要加key2.为什么不能用idx作为key
+			// data:[{val:'a',id:'1'},{val:'b',id:'2'},{val:'c',id:'3'},{val:'d',id:'4'}]//3.要用id作为key
 			// inputValue:'输入框的默认值'
 		}
 	}
     handleChange = () => {
     	this.setState({
-    		// data:['d','c','b','a'],
-    		data:[{val:'d',id:'4'},{val:'c',id:'3'},{val:'b',id:'2'},{val:'a',id:'1'}],
+    		data:['d','c','b','a'],
+    		// data:[{val:'d',id:'4'},{val:'c',id:'3'},{val:'b',id:'2'},{val:'a',id:'1'}],
     		// inputValue:'改变输入框的值'
     	})
     }
    
-    static getDerivedStateFromProps(props, state){
-    	return null
-    }
     // 上面实例中在数组重新排序后，key对应的实例都没有销毁，而是重新更新。具体更新过程我们拿key=0的元素来说明， 数组重新排序后：
     // 1. 组件重新render得到新的虚拟dom；
     // 2. 新老两个虚拟dom进行diff，新老版的都有key=0的组件，react认为同一个组件，则只可能更新组件；
@@ -33,13 +30,15 @@ export default class Example2 extends Component{
     	return <div>
     		{/* 1.为什么需要加key */}
     		{/* <div>
-				{this.state.data[0]=='a'?<Text1 key={1}  />:<Text2 key={2}  />}
-				{this.state.data[0]=='d'?<Text1 key={1} />:<Text2 key={2} />}
-			</div> */}
+    			{this.state.data[0]=='a'?<Text1 key={1}  />:<Text2 key={2}  />}
+    			{this.state.data[0]=='d'?<Text1 key={1} />:<Text2 key={2} />}
+    		</div> */}
+			
     		{/* 2.为什么不能用idx作为key */}
-    		{/* {this.state.data.map((item,idx) => <Item key={idx} parentValue={item}/>)} */}
+    		{this.state.data.map((item,idx) => <Item key={idx} parentValue={item}/>)}
+			
     		{/* 3.要用id作为key */}
-    		{this.state.data.map((item,idx) => <Item key={item.id} parentValue={item.val}/>)}
+    		{/* {this.state.data.map((item,idx) => <Item key={item.id} parentValue={item.val}/>)} */}
     		<button onClick={this.handleChange}>改变state</button>
     	</div>
     }
