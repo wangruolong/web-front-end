@@ -7,7 +7,7 @@ import {setGlobalData} from 'actions/globalAction'
 
 const mapStateToProps = state => {
 	return {
-		checkAuth: state.ucInfo.get('checkAuth')
+		context: state.global.context
 	}
 }
 

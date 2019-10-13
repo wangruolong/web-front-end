@@ -14,3 +14,4 @@ export const GET_IDENTIFY_CODE = 'GET_IDENTIFY_CODE'
 export const REFRESH_TOKEN = 'REFRESH_TOKEN'
 
 export const SET_GLOBAL_DATA = 'SET_GLOBAL_DATA' //设置全局数据
+export const SET_INIT_FLAG = 'SET_INIT_FLAG'

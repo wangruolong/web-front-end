@@ -6,7 +6,7 @@ import {setGlobalData} from 'actions/globalAction'
 
 const mapStateToProps = state => {
 	return {
-		loading: state.global.get('loading')
+		loading: state.global.loading
 	}
 }
 

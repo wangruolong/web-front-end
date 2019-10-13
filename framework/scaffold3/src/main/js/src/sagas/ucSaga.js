@@ -3,6 +3,7 @@ import {hashHistory} from 'react-router'
 import { camelizeKeys } from 'humps'
 import { SUCCESS_SUFFIX, FAILURE_SUFFIX, REQUEST_SUFFIX } from 'actions/actionTypes'
 import { getIdentifyCode as getIdentifyCodeAction } from '../actions/ucAction'
+import { setInitFlag as setInitFlagAction } from 'actions/globalAction'
 import OneSDK from '@sdp.nd/one'
 import authUtils from 'utils/authUtil'
 
@@ -56,11 +57,9 @@ export function* login(action) {
 		// 构造ucInfo
 		res = camelizeKeys(res)
 		let ucInfo = buildUcInfo(res)
-		ucInfo['checkAuth'] = {
-			isExpires:true // 表示有效登录
-		}
 		// 保存到store
 		yield put({ type: action.type + SUCCESS_SUFFIX, payload: ucInfo })
+		yield put(setInitFlagAction(true))// 完成初始化数据后，才渲染子节点。
 		// 保存到localstorage
 		authUtils.saveAuth(
 			ucInfo.authInfo.accessToken,
@@ -74,8 +73,7 @@ export function* login(action) {
 
 		let urlArray = window.location.href.split('/login?redirect=') || []
 		console.log('the url is',window.location.href)
-		// 回调地址应该是这种格式的
-		// http://192.168.85.68:8080/#/login?redirect=http://192.168.85.68:8080/#/welcome?key1=abc&key2=222
+		// 回调地址应该是这种格式的 http://192.168.85.68:8080/#/login?redirect=http://192.168.85.68:8080/#/welcome?key1=abc&key2=222
 		console.log(`split('login?redirect=')`,urlArray)
 		if(urlArray.length>1){// 如果有带回调地址，则跳转到对应的对调地址。
 			console.log(`we will arriving`,urlArray[1])
@@ -101,6 +99,7 @@ export function* logout(action) {
 		yield put({type: action.type + SUCCESS_SUFFIX})
 		localStorage.clear()
 		hashHistory.push('/login')
+		yield put(setInitFlagAction(false))// 完成初始化数据后，才渲染子节点。
 	} catch (e) {
 		yield put({type: action.type + FAILURE_SUFFIX, data: e, payload: e})
 	}
@@ -112,10 +111,8 @@ export function* setUcInfo(action) {
 		let auth = authUtils.getAuth()
 		auth['user'] = auth.userInfo
 		let ucInfo = buildUcInfo(auth)
-		ucInfo['checkAuth'] = {
-			isExpires:true // 表示有效登录
-		}
 		yield put({ type: action.type + SUCCESS_SUFFIX, payload: ucInfo })
+		yield put(setInitFlagAction(true))// 完成初始化数据后，才渲染子节点。
 	} catch (e) {
 		yield put({ type: action.type + FAILURE_SUFFIX, data: e, payload: e })
 	}

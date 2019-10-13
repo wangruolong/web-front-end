@@ -67,7 +67,7 @@ export default class Login extends Component {
 		const userNameSuffix = userName ? <Icon type="close-circle" onClick={this.emitEmptyUserName} /> : null
 		const passwordSuffix = password ? <Icon type="close-circle" onClick={this.emitEmptyPassword} /> : null
 		return<div className={styles['login-wrap']}>
-			<div className={styles['form']}>
+			<div className={styles['login-form']}>
 				<h1>{document.title}</h1>
 				<Input placeholder="用户名"
 					prefix={<Icon type="user" />}
