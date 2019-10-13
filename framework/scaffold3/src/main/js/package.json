@@ -59,6 +59,8 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "browserslist": "^4.7.0",
+    "caniuse-lite": "^1.0.30000999",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^5.0.3",
     "cross-env": "^5.2.0",
