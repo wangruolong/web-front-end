@@ -1,0 +1,10 @@
+.animation-wrap{
+    >div{
+    }
+}
+
+@keyframes myfirst
+{
+    0%   {transform: rotateY(129deg) rotateX(46.5deg);}
+    100% {transform: rotateY(489deg) rotateX(406.5deg);}
+}

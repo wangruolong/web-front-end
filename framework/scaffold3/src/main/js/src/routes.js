@@ -5,6 +5,7 @@ import GuestSmart from './containers/guest'
 import LoginSmart from './containers/login'
 import HomeSmart from './containers/home'
 import WelcomeSmart from './containers/home/welcome'
+import AnimationSmart from './containers/home/animation'
 const Routes = () => (
 	<Router history={hashHistory}>
 		<Route path="/" component={IndexSmart}>
@@ -12,6 +13,7 @@ const Routes = () => (
 			<IndexRedirect to='home/welcome'/>
 			<Route path='home' component={HomeSmart}>
 				<Route path='welcome' component={WelcomeSmart} />
+				<Route path='animation' component={AnimationSmart} />
 			</Route>
 			<Route path='guest' component={GuestSmart} />
 		</Route>
