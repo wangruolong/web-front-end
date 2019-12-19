@@ -95,7 +95,8 @@ module.exports = {
 			components: path.resolve(process.cwd(), './src/components'),
 			actions: path.resolve(process.cwd(), './src/actions'),
 			utils: path.resolve(process.cwd(), './src/utils'),
-			assets: path.resolve(process.cwd(), './src/assets')
+			assets: path.resolve(process.cwd(), './src/assets'),
+			framework: path.resolve(process.cwd(), './src/framework'),
 		}
 	},
 	module: {
