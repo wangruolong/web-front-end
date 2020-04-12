@@ -73,20 +73,42 @@ module.exports = {
 			}
 		})
 	],
+	// optimization: {
+	// 	splitChunks: {
+	// 		//如果2个模块以上的文件引用了同一个文件，则会抽取出来作为公共文件引用。
+	// 		cacheGroups: {
+	// 			commons: {
+	// 				name: 'common',
+	// 				chunks: 'initial',
+	// 				minChunks: 2
+	// 			}
+	// 		},
+	// 		// 把全部加入比较
+	// 		chunks: 'all'
+	// 	}
+	// },
 	optimization: {
-		splitChunks: {
-			//如果2个模块以上的文件引用了同一个文件，则会抽取出来作为公共文件引用。
-			cacheGroups: {
-				commons: {
-					name: 'common',
-					chunks: 'initial',
-					minChunks: 2
-				}
+		splitChunks:{
+		  chunks: 'all',
+		  minSize: 30000,
+		  minChunks: 1,
+		  maxAsyncRequests: 5,
+		  maxInitialRequests: 3,
+		  automaticNameDelimiter: '~',
+		  cacheGroups: {
+			vendors: {
+				test: /[\\/]node_modules[\\/]/,
+				priority: -10,
+				name: 'vendors'
 			},
-			// 把全部加入比较
-			chunks: 'all'
+			default: {
+			  priority: -20,
+			  reuseExistingChunk: true,
+			  name: 'common'
+			}
+		  }
 		}
-	},
+	  },
 	resolve: {
 		alias: {//在全局范围内定义的别名，可以在import from的时候使用。
 			'fish': '@sdp.nd/fish',
