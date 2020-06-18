@@ -11,7 +11,7 @@ const SpritesmithPlugin = require('webpack-spritesmith')
 module.exports = {
 	entry: {
 		app: './src/index.js',
-		venders: ['react-dom','core-js','react-router','redux-saga']
+		// venders: ['react-dom','core-js','react-router','redux-saga']
 	},
 	output: {
 		filename: '[name].[chunkhash].js',
@@ -89,24 +89,24 @@ module.exports = {
 	// },
 	optimization: {
 		splitChunks:{
-		  chunks: 'all',
-		  minSize: 30000,
-		  minChunks: 1,
-		  maxAsyncRequests: 5,
-		  maxInitialRequests: 3,
-		  automaticNameDelimiter: '~',
-		  cacheGroups: {
-			vendors: {
-				test: /[\\/]node_modules[\\/]/,
-				priority: -10,
-				name: 'vendors'
-			},
-			default: {
-			  priority: -20,
-			  reuseExistingChunk: true,
-			  name: 'common'
-			}
-		  }
+			chunks: 'all',// 共有3个值"initial"，"async"和"all"。配置后，代码分割优化仅选择初始块，按需块或所有块
+			minSize: 30000,// （默认值：30000）块的最小大小
+			minChunks: 1,// （默认值：1）在拆分之前共享模块的最小块数
+			maxAsyncRequests: 5,//（默认为5）按需加载时并行请求的最大数量
+			maxInitialRequests: 3,//（默认值为3）入口点的最大并行请求数
+			automaticNameDelimiter: '~',// 默认情况下，webpack将使用块的来源和名称生成名称，例如vendors~main.js
+			cacheGroups: {// 以上条件都满足后会走入cacheGroups进一步进行优化的判断
+				vendors: {
+					test: /[\\/]node_modules[\\/]/,// 判断引入库是否是node_modules里的
+					priority: -10,// 数字越大优先级越高 （-10大于-20）
+					name: 'vendors'// 设置代码分割后的文件名
+				},
+				default: {//所有代码分割快都符合默认值，此时判断priority优先级
+					priority: -20,
+					reuseExistingChunk: true,// 允许在模块完全匹配时重用现有的块，而不是创建新的块。
+					name: 'common'
+				}
+		  	}
 		}
 	  },
 	resolve: {
