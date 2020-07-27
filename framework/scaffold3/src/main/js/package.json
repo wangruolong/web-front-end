@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dist": "http-server dist",
-    "dev": "cross-env APP_ENV=development webpack-dev-server --open --config ./resources/webpack/webpack.dev.js --progress --color --mode development",
+    "dev": "cross-env APP_ENV=development webpack-dev-server --open --config ./resources/webpack/webpack.dev.js --color --mode development",
     "build:development": "cross-env APP_ENV=development webpack --config ./resources/webpack/webpack.dev.js --display-modules",
     "build:test": "cross-env APP_ENV=test webpack --config ./resources/webpack/webpack.prod.js --display-modules ",
     "build:preproduction": "cross-env APP_ENV=preproduction webpack --config ./resources/webpack/webpack.prod.js --display-modules ",
@@ -101,6 +101,7 @@
     "webpack-dev-server": "^3.1.5",
     "webpack-merge": "^4.1.4",
     "webpack-spritesmith": "^1.0.0",
+    "webpackbar": "^4.0.0",
     "with-immutable-props-to-js": "^1.1.0",
     "xml-loader": "^1.2.1"
   }

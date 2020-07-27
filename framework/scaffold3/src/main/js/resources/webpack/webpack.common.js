@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const SpritesmithPlugin = require('webpack-spritesmith')
+const WebpackBar = require('webpackbar')
 
 module.exports = {
 	entry: {
@@ -18,6 +19,7 @@ module.exports = {
 		path: path.join(process.cwd(), '../webapp')//输出目录和清理目录要对应
 	},
 	plugins: [
+		new WebpackBar({color:'#F012BE'}),
 		new CleanWebpackPlugin([path.join(process.cwd(), '../webapp')], {//输出目录和清理目录要对应
 			allowExternal: true,
 			exclude: ['WEB-INF']
